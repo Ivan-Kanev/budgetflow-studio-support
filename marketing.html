@@ -1,90 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>BudgetFlow Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A visual-first budgeting app. Track income, expenses, and savings with beautiful charts. No accounts. One-time purchase.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A visual-first budgeting app. Track income, expenses, and savings with beautiful charts. No accounts. One-time purchase." />
+
   <style>
+    :root {
+      --accent: #00c389;
+      --bg: #0f1115;
+      --card: rgba(255, 255, 255, 0.06);
+      --text: #ffffff;
+      --muted: #b5b5b5;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #ffffff;
-      color: #111;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.7;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #1a3f35, transparent),
+                  radial-gradient(1000px 500px at 90% 10%, #0f2e27, transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    h1 {
-      font-size: 36px;
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero .tagline {
+      margin-top: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card h3 {
+      margin-top: 0;
       margin-bottom: 10px;
+      font-size: 20px;
     }
-    h2 {
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    /* LINKS */
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
       margin-top: 40px;
     }
-    .tagline {
-      font-size: 20px;
-      color: #00B386;
-      margin-bottom: 30px;
-    }
-    ul {
-      padding-left: 20px;
-    }
+
     a {
-      color: #00B386;
+      color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
     }
-    .footer {
-      margin-top: 60px;
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: #777;
       font-size: 14px;
-      color: #666;
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .hero p {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<h1>BudgetFlow Studio</h1>
-<div class="tagline">Make your money flow.</div>
+  <div class="container">
 
-<p>
-BudgetFlow Studio is a modern, visual-first budgeting app designed to make money management clear, simple, and enjoyable.
-</p>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>BudgetFlow Studio</h1>
+      <div class="tagline">Make your money flow.</div>
+      <p>
+        A visual-first budgeting app designed to make income, expenses,
+        and savings instantly clear.
+      </p>
+    </div>
 
-<h2>Why BudgetFlow Studio?</h2>
-<ul>
-  <li>Beautiful, easy-to-read charts and analytics</li>
-  <li>Track income, expenses, and cash flow</li>
-  <li>Fully customizable categories with icons and emojis</li>
-  <li>Weekly, monthly, and long-term insights</li>
-  <li>Ultra-modern, intuitive design</li>
-</ul>
+    <!-- FEATURE CARDS -->
+    <div class="grid">
+      <div class="card">
+        <h3>Visual Analytics</h3>
+        <p>Beautiful charts that make financial trends easy to understand.</p>
+      </div>
 
-<h2>Privacy First</h2>
-<p>
-No accounts. No tracking. No data collection.<br>
-All your financial data stays on your device.
-</p>
+      <div class="card">
+        <h3>Full Control</h3>
+        <p>Track income, expenses, cash flow, and savings in one place.</p>
+      </div>
 
-<h2>Simple Pricing</h2>
-<p>
-One-time purchase.<br>
-No subscriptions. No ads. No hidden fees.
-</p>
+      <div class="card">
+        <h3>Custom Categories</h3>
+        <p>Use icons, emojis, and symbols to personalize your budget.</p>
+      </div>
 
-<h2>Available on iPhone & iPad</h2>
-<p>
-Designed for students, professionals, and anyone who prefers clarity over complexity.
-</p>
+      <div class="card">
+        <h3>Privacy First</h3>
+        <p>No accounts, no tracking, no data leaving your device.</p>
+      </div>
+    </div>
 
-<p>
-<a href="index.html">Support</a> ·
-<a href="privacy.html">Privacy Policy</a>
-</p>
+    <!-- PRIVACY -->
+    <div class="section">
+      <h2>Designed for Privacy</h2>
+      <p>
+        BudgetFlow Studio works entirely offline.
+        Your financial data stays on your device — always.
+      </p>
+    </div>
 
-<div class="footer">
-© 2026 BudgetFlow Studio
-</div>
+    <!-- PRICING -->
+    <div class="section">
+      <h2>Simple Pricing</h2>
+      <p>
+        One-time purchase.<br>
+        No subscriptions. No ads. No compromises.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="links">
+      <a href="index.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 BudgetFlow Studio
+  </footer>
 
 </body>
 </html>
