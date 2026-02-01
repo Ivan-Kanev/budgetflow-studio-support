@@ -1,44 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BudgetFlow Studio – Support</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #ffffff;
-      color: #111;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
-    }
-    h1 { font-size: 28px; }
-    a { color: #00B386; text-decoration: none; }
-  </style>
+<meta charset="UTF-8">
+<title>BudgetFlow Studio – Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --accent: #00c389;
+  --bg: #0b0d10;
+  --text: #ffffff;
+  --muted: #a6a6a6;
+  --glass: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background:
+    radial-gradient(700px 400px at 20% -10%, #163f33, transparent),
+    radial-gradient(800px 500px at 80% 10%, #0f2f28, transparent),
+    var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 120px 24px 80px;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 32px;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+header span {
+  font-weight: 700;
+}
+
+/* CONTENT */
+h1 {
+  font-size: 42px;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card {
+  background: var(--glass);
+  padding: 28px;
+  border-radius: 18px;
+  margin-top: 40px;
+}
+
+a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 80px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>BudgetFlow Studio – Support</h1>
+<header>
+  <span>BudgetFlow Studio</span>
+</header>
 
-<p>Thank you for using <strong>BudgetFlow Studio</strong>.</p>
+<div class="container">
 
-<p>If you have questions, feedback, or need help, feel free to contact us:</p>
-
+<h1>Support</h1>
 <p>
-📧 <strong>Email:</strong><br>
-<a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
+Need help, have feedback, or a question?<br>
+We’re happy to hear from you.
 </p>
 
-<p>
-🔒 <a href="privacy.html">Privacy Policy</a>
+<div class="card">
+  <p>
+    📧 <strong>Email support</strong><br>
+    <a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
+  </p>
+
+  <p>
+    BudgetFlow Studio is designed to be simple and intuitive.
+    If something feels unclear or missing, your feedback helps shape future updates.
+  </p>
+</div>
+
+<p style="margin-top:40px">
+  <a href="privacy.html">Privacy Policy</a>
 </p>
 
-<p>
-BudgetFlow Studio is a privacy-first app.  
-No accounts. No tracking. No data collection.
-</p>
+</div>
+
+<footer>
+© 2026 BudgetFlow Studio
+</footer>
 
 </body>
 </html>
