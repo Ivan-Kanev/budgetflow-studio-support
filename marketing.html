@@ -16,6 +16,7 @@
   --border: rgba(255,255,255,0.08);
 }
 
+/* RESET */
 * { box-sizing: border-box; }
 
 body {
@@ -28,6 +29,7 @@ body {
   color: var(--text);
 }
 
+/* LAYOUT */
 .container {
   max-width: 1200px;
   margin: auto;
@@ -38,6 +40,9 @@ body {
 .hero {
   text-align: center;
   margin-bottom: 140px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFade 1s ease-out forwards;
 }
 
 .hero h1 {
@@ -59,13 +64,21 @@ body {
   margin: auto;
 }
 
-/* SECTION */
+/* SECTIONS */
 .section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 70px;
   align-items: center;
   margin-bottom: 160px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section.reverse {
@@ -91,17 +104,27 @@ body {
   background: linear-gradient(180deg, #1b1e25, #0f1116);
   border-radius: 36px;
   padding: 14px;
+  max-width: 320px;
+  margin: auto;
   box-shadow:
     0 40px 90px rgba(0,0,0,0.7),
     inset 0 0 0 1px rgba(255,255,255,0.06);
-  max-width: 320px;
-  margin: auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.phone:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(0,195,137,0.4);
 }
 
 .phone img {
   width: 100%;
   border-radius: 28px;
   display: block;
+  opacity: 0;
+  animation: imageFade 0.8s ease forwards;
 }
 
 /* LINKS */
@@ -126,6 +149,28 @@ footer {
   padding-bottom: 40px;
 }
 
+/* ANIMATIONS */
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imageFade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     gap: 50px;
@@ -148,91 +193,55 @@ footer {
   </p>
 </div>
 
-<!-- DASHBOARD -->
+<!-- SECTIONS -->
 <div class="section">
   <div class="text">
     <h2>Your finances. One glance.</h2>
-    <p>
-      See your total balance, monthly income, expenses,
-      and savings rate — clean, calm, and beautifully visualized.
-    </p>
+    <p>Clean overview of balance, income, expenses, and savings.</p>
   </div>
-  <div class="phone">
-    <img src="assets/dashboard.PNG" alt="BudgetFlow Studio Dashboard">
-  </div>
+  <div class="phone"><img src="assets/dashboard.PNG"></div>
 </div>
 
-<!-- CATEGORIES -->
 <div class="section reverse">
   <div class="text">
     <h2>See where your money goes</h2>
-    <p>
-      Colorful category charts show spending distribution
-      in a way that’s fast, intuitive, and satisfying.
-    </p>
+    <p>Colorful charts reveal spending patterns instantly.</p>
   </div>
-  <div class="phone">
-    <img src="assets/categories.PNG" alt="Spending by Category">
-  </div>
+  <div class="phone"><img src="assets/categories.PNG"></div>
 </div>
 
-<!-- TRANSACTIONS -->
 <div class="section">
   <div class="text">
     <h2>Every transaction, crystal clear</h2>
-    <p>
-      Clean timelines with icons and smart grouping
-      make tracking income and expenses effortless.
-    </p>
+    <p>Simple timelines with icons and context.</p>
   </div>
-  <div class="phone">
-    <img src="assets/transactions.PNG" alt="Transactions List">
-  </div>
+  <div class="phone"><img src="assets/transactions.PNG"></div>
 </div>
 
-<!-- ANALYTICS -->
 <div class="section reverse">
   <div class="text">
     <h2>Insights, not spreadsheets</h2>
-    <p>
-      Monthly trends, comparisons, and analytics
-      designed to reveal patterns instantly.
-    </p>
+    <p>Trends and analytics designed for clarity.</p>
   </div>
-  <div class="phone">
-    <img src="assets/analytics.PNG" alt="Analytics Overview">
-  </div>
+  <div class="phone"><img src="assets/analytics.PNG"></div>
 </div>
 
-<!-- CASH FLOW -->
 <div class="section">
   <div class="text">
     <h2>Cash flow under control</h2>
-    <p>
-      Track how money moves over time
-      and see progress without stress or complexity.
-    </p>
+    <p>Track progress and movement over time.</p>
   </div>
-  <div class="phone">
-    <img src="assets/cashflow.PNG" alt="Cash Flow">
-  </div>
+  <div class="phone"><img src="assets/cashflow.PNG"></div>
 </div>
 
-<!-- SETTINGS -->
 <div class="section reverse">
   <div class="text">
     <h2>Your app. Your style.</h2>
-    <p>
-      Light & dark themes, language selection,
-      currency control, and full customization.
-    </p>
+    <p>Themes, language, currency, and full control.</p>
   </div>
-  <div class="phone">
-    <img src="assets/settings.PNG" alt="Settings">
-  </div>
+  <div class="phone"><img src="assets/settings.PNG"></div>
 </div>
 
-<!-- LINKS -->
 <div class="links">
   <a href="index.html">Support</a>
   <a href="privacy.html">Privacy Policy</a>
@@ -240,9 +249,22 @@ footer {
 
 </div>
 
-<footer>
-© 2026 BudgetFlow Studio
-</footer>
+<footer>© 2026 BudgetFlow Studio</footer>
+
+<script>
+/* Scroll reveal */
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
