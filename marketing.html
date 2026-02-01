@@ -1,209 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>BudgetFlow Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A visual-first budgeting app. Track income, expenses, and savings with beautiful charts. No accounts. One-time purchase." />
+<meta charset="UTF-8">
+<title>BudgetFlow Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A visual-first budgeting app. Track income, expenses, and savings with beautiful charts. No accounts. One-time purchase.">
 
-  <style>
-    :root {
-      --accent: #00c389;
-      --bg: #0f1115;
-      --card: rgba(255, 255, 255, 0.06);
-      --text: #ffffff;
-      --muted: #b5b5b5;
-      --border: rgba(255, 255, 255, 0.08);
-    }
+<style>
+:root {
+  --accent: #00c389;
+  --bg: #0b0d10;
+  --text: #ffffff;
+  --muted: #a6a6a6;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #1a3f35, transparent),
-                  radial-gradient(1000px 500px at 90% 10%, #0f2e27, transparent),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background:
+    radial-gradient(900px 500px at 15% -10%, #163f33, transparent),
+    radial-gradient(900px 500px at 85% 10%, #0f2f28, transparent),
+    var(--bg);
+  color: var(--text);
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px;
+}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      margin-bottom: 100px;
-    }
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 140px;
+}
 
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
 
-    .hero p {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
+.hero .tagline {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
 
-    .hero .tagline {
-      margin-top: 12px;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
+.hero p {
+  color: var(--muted);
+  font-size: 20px;
+  max-width: 640px;
+  margin: auto;
+}
 
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 100px;
-    }
+/* SECTION */
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 70px;
+  align-items: center;
+  margin-bottom: 160px;
+}
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      backdrop-filter: blur(12px);
-    }
+.section.reverse {
+  direction: rtl;
+}
+.section.reverse * {
+  direction: ltr;
+}
 
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
+.text h2 {
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
+.text p {
+  font-size: 18px;
+  color: var(--muted);
+}
 
-    /* SECTIONS */
-    .section {
-      max-width: 700px;
-      margin: 0 auto 80px;
-      text-align: center;
-    }
+/* PHONE FRAME */
+.phone {
+  background: linear-gradient(180deg, #1b1e25, #0f1116);
+  border-radius: 36px;
+  padding: 14px;
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+  max-width: 320px;
+  margin: auto;
+}
 
-    .section h2 {
-      font-size: 36px;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
+.phone img {
+  width: 100%;
+  border-radius: 28px;
+  display: block;
+}
 
-    .section p {
-      font-size: 18px;
-      color: var(--muted);
-    }
+/* LINKS */
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 80px;
+}
 
-    /* LINKS */
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-top: 40px;
-    }
+a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  padding-bottom: 40px;
+}
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-      padding-bottom: 40px;
-    }
-
-    @media (max-width: 600px) {
-      .hero p {
-        font-size: 18px;
-      }
-    }
-  </style>
+@media (max-width: 768px) {
+  .section {
+    gap: 50px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- HERO -->
-    <div class="hero">
-      <h1>BudgetFlow Studio</h1>
-      <div class="tagline">Make your money flow.</div>
-      <p>
-        A visual-first budgeting app designed to make income, expenses,
-        and savings instantly clear.
-      </p>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <h1>BudgetFlow Studio</h1>
+  <div class="tagline">Make your money flow.</div>
+  <p>
+    A visual-first budgeting app that turns income, expenses,
+    and savings into something you instantly understand.
+  </p>
+</div>
 
-    <!-- FEATURE CARDS -->
-    <div class="grid">
-      <div class="card">
-        <h3>Visual Analytics</h3>
-        <p>Beautiful charts that make financial trends easy to understand.</p>
-      </div>
-
-      <div class="card">
-        <h3>Full Control</h3>
-        <p>Track income, expenses, cash flow, and savings in one place.</p>
-      </div>
-
-      <div class="card">
-        <h3>Custom Categories</h3>
-        <p>Use icons, emojis, and symbols to personalize your budget.</p>
-      </div>
-
-      <div class="card">
-        <h3>Privacy First</h3>
-        <p>No accounts, no tracking, no data leaving your device.</p>
-      </div>
-    </div>
-
-    <!-- PRIVACY -->
-    <div class="section">
-      <h2>Designed for Privacy</h2>
-      <p>
-        BudgetFlow Studio works entirely offline.
-        Your financial data stays on your device — always.
-      </p>
-    </div>
-
-    <!-- PRICING -->
-    <div class="section">
-      <h2>Simple Pricing</h2>
-      <p>
-        One-time purchase.<br>
-        No subscriptions. No ads. No compromises.
-      </p>
-    </div>
-
-    <!-- LINKS -->
-    <div class="links">
-      <a href="index.html">Support</a>
-      <a href="privacy.html">Privacy Policy</a>
-    </div>
-
+<!-- DASHBOARD -->
+<div class="section">
+  <div class="text">
+    <h2>Your finances. One glance.</h2>
+    <p>
+      See your total balance, monthly income, expenses,
+      and savings rate — clean, calm, and beautifully visualized.
+    </p>
   </div>
+  <div class="phone">
+    <img src="assets/dashboard.png" alt="BudgetFlow Studio Dashboard">
+  </div>
+</div>
 
-  <footer>
-    © 2026 BudgetFlow Studio
-  </footer>
+<!-- CATEGORIES -->
+<div class="section reverse">
+  <div class="text">
+    <h2>See where your money goes</h2>
+    <p>
+      Colorful category charts show spending distribution
+      in a way that’s fast, intuitive, and satisfying.
+    </p>
+  </div>
+  <div class="phone">
+    <img src="assets/categories.png" alt="Spending by Category">
+  </div>
+</div>
+
+<!-- TRANSACTIONS -->
+<div class="section">
+  <div class="text">
+    <h2>Every transaction, crystal clear</h2>
+    <p>
+      Clean timelines with icons and smart grouping
+      make tracking income and expenses effortless.
+    </p>
+  </div>
+  <div class="phone">
+    <img src="assets/transactions.png" alt="Transactions List">
+  </div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="section reverse">
+  <div class="text">
+    <h2>Insights, not spreadsheets</h2>
+    <p>
+      Monthly trends, comparisons, and analytics
+      designed to reveal patterns instantly.
+    </p>
+  </div>
+  <div class="phone">
+    <img src="assets/analytics.png" alt="Analytics Overview">
+  </div>
+</div>
+
+<!-- CASH FLOW -->
+<div class="section">
+  <div class="text">
+    <h2>Cash flow under control</h2>
+    <p>
+      Track how money moves over time
+      and see progress without stress or complexity.
+    </p>
+  </div>
+  <div class="phone">
+    <img src="assets/cashflow.png" alt="Cash Flow">
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="section reverse">
+  <div class="text">
+    <h2>Your app. Your style.</h2>
+    <p>
+      Light & dark themes, language selection,
+      currency control, and full customization.
+    </p>
+  </div>
+  <div class="phone">
+    <img src="assets/settings.png" alt="Settings">
+  </div>
+</div>
+
+<!-- LINKS -->
+<div class="links">
+  <a href="index.html">Support</a>
+  <a href="privacy.html">Privacy Policy</a>
+</div>
+
+</div>
+
+<footer>
+© 2026 BudgetFlow Studio
+</footer>
 
 </body>
 </html>
