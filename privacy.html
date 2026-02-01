@@ -1,64 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy – BudgetFlow Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #ffffff;
-      color: #111;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
-    }
-    h1 { font-size: 28px; }
-  </style>
+<meta charset="UTF-8">
+<title>BudgetFlow Studio – Privacy Policy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --accent: #00c389;
+  --bg: #0b0d10;
+  --text: #ffffff;
+  --muted: #a6a6a6;
+  --glass: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background:
+    radial-gradient(700px 400px at 20% -10%, #163f33, transparent),
+    radial-gradient(800px 500px at 80% 10%, #0f2f28, transparent),
+    var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 120px 24px 80px;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 32px;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+header span {
+  font-weight: 700;
+}
+
+/* CONTENT */
+h1 {
+  font-size: 42px;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+h2 {
+  margin-top: 48px;
+  font-size: 24px;
+}
+
+p {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card {
+  background: var(--glass);
+  padding: 28px;
+  border-radius: 18px;
+  margin-top: 40px;
+}
+
+a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 80px;
+}
+</style>
 </head>
+
 <body>
 
+<header>
+  <span>BudgetFlow Studio</span>
+</header>
+
+<div class="container">
+
 <h1>Privacy Policy</h1>
-
-<p><strong>BudgetFlow Studio</strong> respects your privacy.</p>
-
-<h2>Data Collection</h2>
 <p>
-BudgetFlow Studio does <strong>not</strong> collect, store, or transmit any personal data.
+Your privacy is a core principle of BudgetFlow Studio.
 </p>
 
-<h2>Accounts</h2>
+<div class="card">
+
+<h2>No Data Collection</h2>
 <p>
-The app does not require user accounts, logins, or registration.
+BudgetFlow Studio does not collect, store, transmit, or share any personal data.
 </p>
 
-<h2>Tracking</h2>
+<h2>No Accounts</h2>
 <p>
-BudgetFlow Studio does not use analytics, tracking, or third-party data collection tools.
+The app does not require registration, accounts, or login credentials.
 </p>
 
-<h2>Data Storage</h2>
+<h2>No Tracking</h2>
 <p>
-All financial data is stored locally on your device and never leaves it.
+No analytics, tracking SDKs, or third-party services are used.
 </p>
 
-<h2>Third Parties</h2>
+<h2>Local Storage Only</h2>
 <p>
-No third parties have access to your data.
+All financial data remains on your device and never leaves it.
 </p>
 
 <h2>Contact</h2>
 <p>
-If you have any questions about this privacy policy, contact:
-</p>
-<p>
-📧 <a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
+If you have questions about privacy, contact:<br>
+<a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
 </p>
 
-<p>
+</div>
+
+<p style="margin-top:40px">
 Last updated: February 2026
 </p>
+
+</div>
+
+<footer>
+© 2026 BudgetFlow Studio
+</footer>
 
 </body>
 </html>
