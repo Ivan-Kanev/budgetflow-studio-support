@@ -38,102 +38,190 @@ header {
   border-bottom: 1px solid rgba(255,255,255,0.05);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 10;
+}
+
+header span {
+  font-weight: 700;
+}
+
+header a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 /* LAYOUT */
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 160px 24px 80px;
+  padding: 140px 24px 80px;
 }
 
 /* HERO */
-.hero span, .hero h1, .hero p {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: heroIn 0.9s ease forwards;
+.hero {
+  text-align: center;
+  margin-bottom: 140px;
+  position: relative;
 }
-.hero h1 { animation-delay: .1s }
-.hero span { animation-delay: .3s }
-.hero p { animation-delay: .5s }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -120px;
+  background: radial-gradient(circle, rgba(0,195,137,0.15), transparent 70%);
+  filter: blur(60px);
+  animation: glow 6s ease-in-out infinite alternate;
+  z-index: -1;
+}
 
 .hero h1 {
-  font-size: clamp(44px, 6vw, 82px);
+  font-size: clamp(42px, 6vw, 80px);
   letter-spacing: -0.04em;
-  text-align: center;
 }
-.hero span {
-  display: block;
-  color: var(--accent);
-  text-align: center;
-  margin: 14px 0;
-}
+
 .hero p {
-  text-align: center;
+  max-width: 640px;
+  margin: 16px auto 0;
   color: var(--muted);
-  max-width: 620px;
-  margin: auto;
   font-size: 20px;
 }
 
-/* PILLS */
+/* FEATURE PILLS */
 .pills {
   display: flex;
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 36px;
+  margin-top: 32px;
 }
+
 .pill {
   padding: 8px 14px;
   border-radius: 999px;
   background: var(--glass);
   font-size: 14px;
   opacity: 0;
-  animation: heroIn .8s ease forwards;
+  transform: translateY(10px);
+  animation: pillIn 0.6s ease forwards;
 }
-.pill:nth-child(1){animation-delay:.7s}
-.pill:nth-child(2){animation-delay:.8s}
-.pill:nth-child(3){animation-delay:.9s}
-.pill:nth-child(4){animation-delay:1s}
 
-/* SECTIONS */
+.pill:nth-child(1){animation-delay:.1s}
+.pill:nth-child(2){animation-delay:.2s}
+.pill:nth-child(3){animation-delay:.3s}
+.pill:nth-child(4){animation-delay:.4s}
+
+/* SECTION */
 .section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 90px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 80px;
   align-items: center;
-  margin-bottom: 180px;
-  opacity: 0;
+  margin-bottom: 160px;
 }
 
-.section.left { transform: translateX(-80px); }
-.section.right { transform: translateX(80px); }
+.section.reverse { direction: rtl; }
+.section.reverse * { direction: ltr; }
 
-.section.visible {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 1s cubic-bezier(.2,.8,.2,1);
+.text h2 {
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 
-.text h2 { font-size: 36px; }
-.text p { font-size: 18px; color: var(--muted); }
+.text p {
+  font-size: 18px;
+  color: var(--muted);
+}
 
 /* PHONE */
 .phone {
-  background: linear-gradient(180deg,#1b1e25,#0f1116);
+  background: linear-gradient(180deg, #1b1e25, #0f1116);
   border-radius: 36px;
   padding: 14px;
   max-width: 320px;
   margin: auto;
-  box-shadow: 0 60px 140px rgba(0,0,0,.85);
-  transform: translateY(40px);
+  box-shadow: 0 50px 120px rgba(0,0,0,0.8);
+  animation: float 6s ease-in-out infinite;
   transition: transform .4s ease;
 }
+
+.phone:hover {
+  transform: translateY(-14px) scale(1.02);
+}
+
 .phone img {
   width: 100%;
   border-radius: 28px;
+}
+
+/* DIFFERENT */
+.compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 24px;
+  margin-bottom: 160px;
+}
+
+.compare div {
+  background: var(--glass);
+  padding: 24px;
+  border-radius: 18px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.compare div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.5);
+}
+
+.compare strong {
+  color: var(--accent);
+}
+
+/* APP STORE BADGE */
+.store {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+
+.store a {
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #00c389, #00a97a);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  animation: pulse 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.store a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+  transform: translateX(-100%);
+}
+
+.store a:hover::after {
+  animation: shine 1s ease forwards;
+}
+
+/* LINKS */
+.links {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.links a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 20px;
 }
 
 /* FOOTER */
@@ -144,13 +232,32 @@ footer {
 }
 
 /* ANIMATIONS */
-@keyframes heroIn {
-  to { opacity:1; transform:translateY(0); }
+@keyframes glow {
+  from { opacity: .4 }
+  to { opacity: .8 }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+
+@keyframes pillIn {
+  to { opacity:1; transform:none }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1) }
+  50% { transform: scale(1.05) }
+}
+
+@keyframes shine {
+  to { transform: translateX(120%) }
 }
 
 /* ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
-  * { animation:none!important; transition:none!important }
+  * { animation: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -158,15 +265,15 @@ footer {
 <body>
 
 <header>
-  <strong>BudgetFlow Studio</strong>
+  <span>BudgetFlow Studio</span>
+  <a href="#features">Explore</a>
 </header>
 
 <div class="container">
 
 <div class="hero">
   <h1>BudgetFlow Studio</h1>
-  <span>Make your money flow.</span>
-  <p>Visual budgeting designed for clarity, calm, and control.</p>
+  <p>Make your money flow.</p>
 
   <div class="pills">
     <div class="pill">No accounts</div>
@@ -176,59 +283,59 @@ footer {
   </div>
 </div>
 
-<div class="section left">
+<div class="section">
   <div class="text">
     <h2>Your finances. One glance.</h2>
-    <p>Instant overview without noise.</p>
+    <p>Everything important — instantly visible.</p>
   </div>
   <div class="phone"><img src="assets/dashboard.PNG"></div>
 </div>
 
-<div class="section right">
+<div class="section reverse">
   <div class="text">
     <h2>See where money goes</h2>
-    <p>Categories that actually make sense.</p>
+    <p>Charts designed for humans, not accountants.</p>
   </div>
   <div class="phone"><img src="assets/categories.PNG"></div>
 </div>
 
-<div class="section left">
+<div class="section">
   <div class="text">
     <h2>Effortless tracking</h2>
-    <p>Every transaction, beautifully clear.</p>
+    <p>Every transaction, clear and contextual.</p>
   </div>
   <div class="phone"><img src="assets/transactions.PNG"></div>
 </div>
 
-<div class="section right">
+<div class="section reverse">
   <div class="text">
     <h2>Understand trends</h2>
-    <p>Patterns emerge naturally over time.</p>
+    <p>Patterns emerge naturally with time.</p>
   </div>
   <div class="phone"><img src="assets/analytics.PNG"></div>
+</div>
+
+<h2 style="text-align:center;margin-bottom:40px">Why it’s different</h2>
+
+<div class="compare">
+  <div><strong>Others</strong><br>Subscriptions, accounts, clutter</div>
+  <div><strong>BudgetFlow</strong><br>One-time purchase, local-only</div>
+  <div><strong>Others</strong><br>Tables & numbers</div>
+  <div><strong>BudgetFlow</strong><br>Visual-first clarity</div>
+</div>
+
+<div class="store">
+  <a href="#">Download on the App Store</a>
+</div>
+
+<div class="links">
+  <a href="index.html">Support</a>
+  <a href="privacy.html">Privacy Policy</a>
 </div>
 
 </div>
 
 <footer>© 2026 BudgetFlow Studio</footer>
-
-<script>
-/* Scroll reveal */
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-},{threshold:.25});
-sections.forEach(s=>observer.observe(s));
-
-/* Parallax phones */
-window.addEventListener('scroll',()=>{
-  document.querySelectorAll('.phone').forEach(p=>{
-    p.style.transform = `translateY(${window.scrollY * 0.04}px)`;
-  });
-});
-</script>
 
 </body>
 </html>
