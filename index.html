@@ -42,9 +42,7 @@ header {
   z-index: 10;
 }
 
-header span {
-  font-weight: 700;
-}
+header span { font-weight: 700; }
 
 nav {
   display: flex;
@@ -85,6 +83,18 @@ nav a:hover {
   filter: blur(60px);
   animation: glow 6s ease-in-out infinite alternate;
   z-index: -1;
+}
+
+/* APP STORE BADGE – TOP LEFT */
+.appstore-top-left {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 5;
+}
+
+.appstore-top-left img {
+  height: 56px;
 }
 
 .hero h1 {
@@ -190,26 +200,6 @@ nav a:hover {
   color: var(--accent);
 }
 
-/* APP STORE CTA */
-.store {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0;
-}
-
-.store a {
-  display: inline-block;
-  padding: 16px 28px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #00c389, #00a97a);
-  color: #000;
-  font-weight: 700;
-  text-decoration: none;
-  animation: pulse 3s ease-in-out infinite;
-  position: relative;
-  overflow: hidden;
-}
-
 /* FOOTER */
 footer {
   text-align: center;
@@ -231,11 +221,6 @@ footer {
 @keyframes pillIn {
   to { opacity:1; transform:none }
 }
-
-@keyframes pulse {
-  0%,100% { transform: scale(1) }
-  50% { transform: scale(1.05) }
-}
 </style>
 </head>
 
@@ -253,6 +238,15 @@ footer {
 <div class="container">
 
 <div class="hero">
+
+  <!-- APP STORE BADGE -->
+  <a class="appstore-top-left"
+     href="https://apps.apple.com/"
+     target="_blank"
+     rel="noopener">
+    <img src="assets/appstore-black.png" alt="Download on the App Store">
+  </a>
+
   <h1>BudgetFlow Studio</h1>
   <p>Make your money flow.</p>
 
@@ -303,10 +297,6 @@ footer {
   <div><strong>BudgetFlow</strong><br>One-time purchase, local-only</div>
   <div><strong>Others</strong><br>Tables & numbers</div>
   <div><strong>BudgetFlow</strong><br>Visual-first clarity</div>
-</div>
-
-<div class="store">
-  <a href="https://apps.apple.com/">Download on the App Store</a>
 </div>
 
 </div>
