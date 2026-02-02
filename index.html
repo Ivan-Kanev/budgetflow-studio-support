@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BudgetFlow Studio – Support</title>
+<title>BudgetFlow Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -20,16 +20,11 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
   background:
-    radial-gradient(700px 400px at 20% -10%, #163f33, transparent),
-    radial-gradient(800px 500px at 80% 10%, #0f2f28, transparent),
+    radial-gradient(800px 500px at 10% -10%, #163f33, transparent),
+    radial-gradient(900px 600px at 90% 10%, #0f2f28, transparent),
     var(--bg);
   color: var(--text);
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 120px 24px 80px;
+  overflow-x: hidden;
 }
 
 /* HEADER */
@@ -41,35 +36,158 @@ header {
   backdrop-filter: blur(14px);
   background: rgba(0,0,0,0.35);
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
 }
 
-header span {
-  font-weight: 700;
+header span { font-weight: 700; }
+
+nav {
+  display: flex;
+  gap: 24px;
 }
 
-/* CONTENT */
-h1 {
-  font-size: 42px;
-  letter-spacing: -0.03em;
-  margin-bottom: 12px;
-}
-
-p {
-  font-size: 18px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.card {
-  background: var(--glass);
-  padding: 28px;
-  border-radius: 18px;
-  margin-top: 40px;
-}
-
-a {
-  color: var(--accent);
+nav a {
+  color: var(--text);
+  text-decoration: none;
   font-weight: 600;
+  opacity: .85;
+}
+
+nav a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 140px 24px 80px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 140px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -120px;
+  background: radial-gradient(circle, rgba(0,195,137,0.15), transparent 70%);
+  filter: blur(60px);
+  animation: glow 6s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* LEFT APP STORE BADGE */
+.appstore-badge-left {
+  position: absolute;
+  left: 32px;
+  top: 40px;
+}
+
+.appstore-badge-left img {
+  height: 52px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 80px);
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+/* PILLS */
+.pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--glass);
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: pillIn 0.6s ease forwards;
+}
+
+.pill:nth-child(1){animation-delay:.1s}
+.pill:nth-child(2){animation-delay:.2s}
+.pill:nth-child(3){animation-delay:.3s}
+.pill:nth-child(4){animation-delay:.4s}
+
+/* SECTIONS */
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 80px;
+  margin-bottom: 160px;
+  align-items: center;
+}
+
+.section.reverse { direction: rtl; }
+.section.reverse * { direction: ltr; }
+
+.text h2 { font-size: 36px; }
+.text p { color: var(--muted); font-size: 18px; }
+
+/* PHONE */
+.phone {
+  background: linear-gradient(180deg, #1b1e25, #0f1116);
+  border-radius: 36px;
+  padding: 14px;
+  max-width: 320px;
+  margin: auto;
+  box-shadow: 0 50px 120px rgba(0,0,0,0.8);
+  animation: float 6s ease-in-out infinite;
+}
+
+.phone img { width: 100%; border-radius: 28px; }
+
+/* COMPARE */
+.compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 24px;
+  margin-bottom: 160px;
+}
+
+.compare div {
+  background: var(--glass);
+  padding: 24px;
+  border-radius: 18px;
+}
+
+.compare strong { color: var(--accent); }
+
+/* STORE CTA */
+.store {
+  text-align: center;
+  margin: 100px 0;
+}
+
+.store a {
+  padding: 16px 28px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #00c389, #00a97a);
+  color: #000;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -77,9 +195,13 @@ a {
 footer {
   text-align: center;
   color: #666;
-  font-size: 14px;
-  margin-top: 80px;
+  padding: 40px 0;
 }
+
+/* ANIMATIONS */
+@keyframes glow { from{opacity:.4} to{opacity:.8} }
+@keyframes float { 0%,100%{transform:none} 50%{transform:translateY(-10px)} }
+@keyframes pillIn { to{opacity:1; transform:none} }
 </style>
 </head>
 
@@ -87,37 +209,40 @@ footer {
 
 <header>
   <span>BudgetFlow Studio</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
 </header>
 
 <div class="container">
 
-<h1>Support</h1>
-<p>
-Need help, have feedback, or a question?<br>
-We’re happy to hear from you.
-</p>
+<div class="hero">
+  <a class="appstore-badge-left" href="https://apps.apple.com/" target="_blank">
+    <img src="assets/appstore-badge.svg" alt="Download on the App Store">
+  </a>
 
-<div class="card">
-  <p>
-    📧 <strong>Email support</strong><br>
-    <a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
-  </p>
+  <h1>BudgetFlow Studio</h1>
+  <p>Make your money flow.</p>
 
-  <p>
-    BudgetFlow Studio is designed to be simple and intuitive.
-    If something feels unclear or missing, your feedback helps shape future updates.
-  </p>
+  <div class="pills">
+    <div class="pill">No accounts</div>
+    <div class="pill">No subscriptions</div>
+    <div class="pill">Privacy-first</div>
+    <div class="pill">Visual analytics</div>
+  </div>
 </div>
 
-<p style="margin-top:40px">
-  <a href="privacy.html">Privacy Policy</a>
-</p>
+<!-- sections unchanged -->
+
+<div class="store">
+  <a href="https://apps.apple.com/">Download on the App Store</a>
+</div>
 
 </div>
 
-<footer>
-© 2026 BudgetFlow Studio
-</footer>
+<footer>© 2026 BudgetFlow Studio</footer>
 
 </body>
 </html>
