@@ -4,29 +4,102 @@
 <meta charset="UTF-8">
 <title>BudgetFlow Studio – Support</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-/* SAME VARIABLES & BASE STYLES AS INDEX */
 :root {
-  --accent:#00c389; --bg:#0b0d10; --text:#fff; --muted:#a6a6a6; --glass:rgba(255,255,255,.08);
+  --accent: #00c389;
+  --bg: #0b0d10;
+  --text: #ffffff;
+  --muted: #a6a6a6;
+  --glass: rgba(255,255,255,0.08);
 }
-*{box-sizing:border-box}
-body{
-  margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
-  background:radial-gradient(700px 400px at 20% -10%,#163f33,transparent),
-             radial-gradient(800px 500px at 80% 10%,#0f2f28,transparent),var(--bg);
-  color:var(--text);
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background:
+    radial-gradient(700px 400px at 20% -10%, #163f33, transparent),
+    radial-gradient(800px 500px at 80% 10%, #0f2f28, transparent),
+    var(--bg);
+  color: var(--text);
 }
-header{
-  position:fixed;top:0;width:100%;padding:14px 32px;
-  backdrop-filter:blur(14px);background:rgba(0,0,0,.35);
-  display:flex;justify-content:space-between;align-items:center;
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 120px 24px 80px;
 }
-nav{display:flex;gap:24px}
-nav a{color:var(--text);text-decoration:none;font-weight:600;opacity:.85}
-nav a:hover{opacity:1;color:var(--accent)}
-.container{max-width:800px;margin:auto;padding:120px 24px}
-.card{background:var(--glass);padding:28px;border-radius:18px;margin-top:40px}
-footer{text-align:center;color:#666;margin-top:80px}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 32px;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header span {
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+nav a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* CONTENT */
+h1 {
+  font-size: 42px;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card {
+  background: var(--glass);
+  padding: 28px;
+  border-radius: 18px;
+  margin-top: 40px;
+}
+
+a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 80px;
+}
 </style>
 </head>
 
@@ -42,16 +115,34 @@ footer{text-align:center;color:#666;margin-top:80px}
 </header>
 
 <div class="container">
+
 <h1>Support</h1>
-<p>Need help or feedback?</p>
+<p>
+Need help, have feedback, or a question?<br>
+We’re happy to hear from you.
+</p>
 
 <div class="card">
-<p>📧 <strong>Email</strong><br>
-<a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a></p>
-</div>
+  <p>
+    📧 <strong>Email support</strong><br>
+    <a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
+  </p>
+
+  <p>
+    BudgetFlow Studio is designed to be simple and intuitive.
+    If something feels unclear or missing, your feedback helps shape future updates.
+  </p>
 </div>
 
-<footer>© 2026 BudgetFlow Studio</footer>
+<p style="margin-top:40px">
+  <a href="privacy.html">Privacy Policy</a>
+</p>
+
+</div>
+
+<footer>
+© 2026 BudgetFlow Studio
+</footer>
 
 </body>
 </html>
