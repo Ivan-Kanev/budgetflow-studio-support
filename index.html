@@ -39,7 +39,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  z-index: 20;
 }
 
 header span { font-weight: 700; }
@@ -70,9 +70,10 @@ nav a:hover {
 
 /* HERO */
 .hero {
+  position: relative;
   text-align: center;
   margin-bottom: 140px;
-  position: relative;
+  min-height: 520px; /* ensures button has space */
 }
 
 .hero::before {
@@ -85,21 +86,35 @@ nav a:hover {
   z-index: -1;
 }
 
-/* APP STORE BADGE – TOP LEFT */
-.appstore-top-left {
+/* APP STORE BUTTON — GUARANTEED VISIBLE */
+.store-btn-left {
   position: absolute;
-  top: 32px;
-  left: 32px;
-  z-index: 5;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 18px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 20px 40px rgba(0,0,0,.45);
+  transition: transform .3s ease;
+  z-index: 10;
 }
 
-.appstore-top-left img {
-  height: 56px;
+.store-btn-left:hover {
+  transform: translateY(-53%) scale(1.02);
 }
 
+/* HERO TEXT */
 .hero h1 {
   font-size: clamp(42px, 6vw, 80px);
   letter-spacing: -0.04em;
+  margin-top: 80px;
 }
 
 .hero p {
@@ -164,11 +179,6 @@ nav a:hover {
   margin: auto;
   box-shadow: 0 50px 120px rgba(0,0,0,0.8);
   animation: float 6s ease-in-out infinite;
-  transition: transform .4s ease;
-}
-
-.phone:hover {
-  transform: translateY(-14px) scale(1.02);
 }
 
 .phone img {
@@ -188,12 +198,6 @@ nav a:hover {
   background: var(--glass);
   padding: 24px;
   border-radius: 18px;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.compare div:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,.5);
 }
 
 .compare strong {
@@ -239,12 +243,12 @@ footer {
 
 <div class="hero">
 
-  <!-- APP STORE BADGE -->
-  <a class="appstore-top-left"
+  <!-- APP STORE BUTTON -->
+  <a class="store-btn-left"
      href="https://apps.apple.com/"
      target="_blank"
      rel="noopener">
-    <img src="assets/appstore-black.png" alt="Download on the App Store">
+     Download on the App Store
   </a>
 
   <h1>BudgetFlow Studio</h1>
